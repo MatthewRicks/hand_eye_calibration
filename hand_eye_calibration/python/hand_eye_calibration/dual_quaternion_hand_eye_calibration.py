@@ -601,6 +601,7 @@ def compute_hand_eye_calibration_BASELINE(dq_B_H_vec, dq_W_E_vec, config):
                                                aligned_dq_W_E,
                                                dq_H_E_estimated)
 
+
   (rmse_position,
    rmse_orientation,
    inlier_flags) = evaluate_alignment(poses_B_H, poses_W_H, config, config.visualize)
@@ -654,7 +655,11 @@ def compute_hand_eye_calibration_RANSAC(dq_B_H_vec, dq_W_E_vec, config):
 
   # Reject pairs whose motion is not informative,
   # i.e. their screw axis dot product is large
-  if config.prefilter_poses_enabled:
+
+  # CHANGED: we force to not check the screw axis difference
+  ##################################################################################################
+  #if config.prefilter_poses_enabled:
+  if False:
     dq_B_H_vec_filtered, dq_W_E_vec_filtered = prefilter_using_screw_axis(
         dq_B_H_vec, dq_W_E_vec, config.prefilter_dot_product_threshold)
     assert len(dq_W_E_vec_filtered) == len(dq_B_H_vec_filtered)
@@ -881,9 +886,10 @@ def compute_hand_eye_calibration_RANSAC(dq_B_H_vec, dq_W_E_vec, config):
             "\t\tRMSE position:     {:10.4f}\n"
             "\t\tRMSE orientation:  {:10.4f}\n"
             "\t\tdq_H_E_initial:    {}\n"
-            "\t\tdq_H_E_refined:    {}".format(
+            "\t\tdq_H_E_refined:    {}\n"
+            "\t\tH_E_refined:    {}".format(
                 sample_indices, num_inliers, rmse_position_refined,
-                rmse_orientation_refined, dq_H_E_initial, dq_H_E_refined))
+                rmse_orientation_refined, dq_H_E_initial, dq_H_E_refined, dq_H_E_refined.to_pose().T))
     else:
       print("Rejected sample: {}\n"
             "\t\tNumber of inliers: {}\n"

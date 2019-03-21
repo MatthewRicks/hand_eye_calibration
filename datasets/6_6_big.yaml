@@ -1,0 +1,6 @@
+target_type: 'aprilgrid' 
+april_tag_number_vertical: 6               
+april_tag_number_horizontal: 6               
+april_tag_size_m: 0.057           
+april_tag_gap_size_m: 0.017         
+april_tag_number_pixel_boarder: 2 

@@ -12,6 +12,8 @@ import tf
 from tf2_msgs.msg import TFMessage
 import warnings
 
+import tf.transformations as tfs
+
 
 def write_transformation_to_csv_file(bag_file, target_frame, source_frame,
                                      csv_file_name):
@@ -62,6 +64,15 @@ def write_transformation_to_csv_file(bag_file, target_frame, source_frame,
           if init:
             start_time_tf_message = single_tf.header.stamp
             init = False
+
+          ##############################################################################
+          # We invert the tranformation to find the pose of the camera (static) with respect to the robot base
+          ht = tfs.quaternion_matrix(hamilton_quaternion)
+          ht[0:3,-1] = np.array(translation).T
+          inverse = tfs.inverse_matrix(ht)
+          hamilton_quaternion = tfs.quaternion_from_matrix(inverse)
+          translation = inverse[0:3,-1]
+          ################################################################################
 
           # Write to csv file.
           quaternion = np.array(hamilton_quaternion)

@@ -237,7 +237,7 @@ int main(int argc, char** argv) {
     CHECK(camera);
 
     constexpr bool kRunNonlinearRefinement = true;
-    const double kPixelSigma = 0.5;
+    const double kPixelSigma = 1.0;
     const int kMaxRansacIters = 1000;
     aslam::geometric_vision::PnpPoseEstimator pnp(kRunNonlinearRefinement);
 

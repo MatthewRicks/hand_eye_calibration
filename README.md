@@ -1,5 +1,13 @@
 # Hand-Eye-Calibration
 
+IMPORTANT FOR STANFORD USERS:
+You need to add the ssh key of the computer to the account with access to this repo.
+1. Generate ssh keys for the computer you want to install this repo on
+2. Execute: cat ~/.ssh/id_rsa.pub (or whatever file your key is in)
+3. Copy the result and log in into github with the username pair-svl (ask Ajay for the password)
+4. Add the ssh key in the keys of the user
+This process will allow you to clone the repo
+
 ## Description
 
 Python tools to perform hand-eye calibration.
@@ -58,7 +66,7 @@ catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 # Clone the repositories and its dependencies.
 cd src
-git clone git@github.com:ethz-asl/hand_eye_calibration.git
+git clone git@github.com:StanfordVL/hand_eye_calibration.git
 wstool init
 wstool merge hand_eye_calibration/all_dependencies.rosinstall
 wstool update -j 8

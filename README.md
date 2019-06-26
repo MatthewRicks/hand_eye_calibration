@@ -77,6 +77,10 @@ catkin build hand_eye_calibration hand_eye_calibration_target_extractor hand_eye
 
 ## Tutorial
 
+Follow the instructions here: https://github.com/StanfordVL/perls/wiki/Calibration-with-hand_eye_calibration
+
+The following is the original information of the raw package:
+
 ### Formats
 Our hand-eye calibration expects timestamped poses with Hamiltonian quaternions in the following format, where [.] denotes the unit:
 > p = [t[s], x[m], y[m], z[m], q_x, q_y, q_z, q_w]

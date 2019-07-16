@@ -4,7 +4,7 @@ IMPORTANT FOR STANFORD USERS:
 You need to add the ssh key of the computer to the account with access to this repo.
 1. Generate ssh keys for the computer you want to install this repo on
 2. Execute: cat ~/.ssh/id_rsa.pub (or whatever file your key is in)
-3. Copy the result and log in into github with the username pair-svl (ask Ajay for the password)
+3. Copy the result and log in into github with the username svl-pair (ask Ajay for the password)
 4. Add the ssh key in the keys of the user
 This process will allow you to clone the repo
 
